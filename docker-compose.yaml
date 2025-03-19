@@ -1,0 +1,13 @@
+services:
+  frontend:
+    container_name: react # コンテナ名
+    build:
+      context: . # ディレクトリパス
+      dockerfile: Dockerfile # ビルドファイル
+    volumes:
+    - type: bind
+      source: ./react # ホストマシン上のディレクトリ
+      target: /todo # Dockerコンテナ上のディレクトリ
+    command: sh -c "yarn start" # React を実行
+    ports:
+      - 3000:3000 # ホストマシン:Dockerコンテナ
